@@ -42,7 +42,7 @@ try {
         New-Item -ItemType Directory -Path $elanDir -Force -ErrorAction Stop | Out-Null
         Invoke-WebRequest -Uri "https://elan.lean-lang.org/elan-init.ps1" -UseBasicParsing -OutFile $elanFile -ErrorAction Stop
         Unblock-File -LiteralPath $elanFile -ErrorAction Stop
-        & powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '$elanFile' -NoPrompt 1 -DefaultToolchain ${elanStableChannel}"
+        & powershell.exe -NoProfile -ExecutionPolicy Unrestricted -Command "& '$elanFile' -NoPrompt 1 -DefaultToolchain ${elanStableChannel}"
         $rc = $LASTEXITCODE
     }
 }
